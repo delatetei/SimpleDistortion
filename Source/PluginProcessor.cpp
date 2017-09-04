@@ -140,9 +140,15 @@ void SimpleDistortionAudioProcessor::processBlock (AudioSampleBuffer& buffer, Mi
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         float* channelData = buffer.getWritePointer (channel);
-
-        // ..do something to the data...
+        for (int buffNum = 0; buffNum < buffer.getNumSamples(); ++buffNum)
+        {
+            float data = channelData[buffNum];
+            int sign = (data > 0) - (data < 0);
+            channelData[buffNum] = sign * (1.0f - std::exp(-5.0f * std::abs(data)));
+        }
     }
+
+    buffer.applyGain(0.4);
 }
 
 //==============================================================================
