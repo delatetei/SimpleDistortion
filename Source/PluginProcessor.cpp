@@ -154,7 +154,7 @@ void SimpleDistortionAudioProcessor::processBlock (AudioSampleBuffer& buffer, Mi
         }
     }
 
-    buffer.applyGain(0.4);
+    buffer.applyGain(*(parameters.getRawParameterValue("level")));
 }
 
 //==============================================================================
