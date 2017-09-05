@@ -24,7 +24,13 @@ SimpleDistortionAudioProcessor::SimpleDistortionAudioProcessor()
                      #endif
                        )
 #endif
+:parameters(*this, nullptr)
 {
+    auto valueToTextFunction = [](float value) {return String(value); };
+    parameters.createAndAddParameter("level", "LEVEL", "LEVEL", NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f, valueToTextFunction, nullptr );
+    parameters.createAndAddParameter("dist", "DISTORTION", "DIST", NormalisableRange<float>(1.0f, 5.0f, 0.1f), 1.0f, valueToTextFunction, nullptr );
+
+    parameters.state = ValueTree(Identifier("SimpleDistortion"));
 }
 
 SimpleDistortionAudioProcessor::~SimpleDistortionAudioProcessor()
@@ -159,7 +165,7 @@ bool SimpleDistortionAudioProcessor::hasEditor() const
 
 AudioProcessorEditor* SimpleDistortionAudioProcessor::createEditor()
 {
-    return new SimpleDistortionAudioProcessorEditor (*this);
+    return new SimpleDistortionAudioProcessorEditor (*this, parameters);
 }
 
 //==============================================================================
