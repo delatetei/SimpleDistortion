@@ -35,8 +35,16 @@ private:
 
     Slider level;
     Slider dist;
+    TextButton bypass;
+    Path path;
+    ShapeButton standbyLight;
+    Label checkLabel;
+    
     Label levelLabel;
     Label distLabel;
+    Label productNameLabel1;
+    Label productNameLabel2;
+    Label productNameLabel3;
 
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> levelAttachment;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> distAttachment;
