@@ -33,18 +33,24 @@ private:
     SimpleDistortionAudioProcessor& processor;
     AudioProcessorValueTreeState& valueTreeState;
 
-    Slider level;
-    Slider dist;
-    TextButton bypass;
+    // Standby Light
+    Label checkLabel;
     Path path;
     ShapeButton standbyLight;
-    Label checkLabel;
-    
+
+    // Parameter
+    Slider level;
     Label levelLabel;
+    Slider dist;
     Label distLabel;
+
+    // Product Name
     Label productNameLabel1;
     Label productNameLabel2;
     Label productNameLabel3;
+
+    // Bypass Switch
+    TextButton bypass;
 
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> levelAttachment;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> distAttachment;
