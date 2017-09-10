@@ -22,6 +22,9 @@
             file="Source/PluginEditor.cpp"/>
       <FILE id="pm4lWU" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
+    <FILE id="RYBL2s" name="StandbyLight.cpp" compile="1" resource="0"
+          file="Source/StandbyLight.cpp"/>
+    <FILE id="hl8Sua" name="StandbyLight.h" compile="0" resource="0" file="Source/StandbyLight.h"/>
   </MAINGROUP>
   <EXPORTFORMATS>
     <VS2017 targetFolder="Builds/VisualStudio2017" vst3Folder="F:\VST_SDK\VST3_SDK">

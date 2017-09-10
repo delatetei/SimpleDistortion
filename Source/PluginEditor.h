@@ -12,6 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
+#include "StandbyLight.h"
 
 
 //==============================================================================
@@ -27,6 +28,9 @@ public:
     void paint (Graphics&) override;
     void resized() override;
 
+    //==============================================================================
+    void changeStandbyLightState(float value);
+
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
@@ -35,6 +39,7 @@ private:
 
     // Standby Light
     Label checkLabel;
+    StandbyLight standbyLight;
 
     // Parameter
     Slider level;

@@ -57,6 +57,17 @@ public:
 
 private:
     //==============================================================================
+    struct ParameterListener : AudioProcessorValueTreeState::Listener
+    {
+    public:
+        ParameterListener(SimpleDistortionAudioProcessor& p);
+        void parameterChanged(const String& parameterID, float newValue) override;
+    private:
+        SimpleDistortionAudioProcessor& _p;
+    };
+
+    //==============================================================================
+    AudioProcessorEditor* editor;
     AudioProcessorValueTreeState parameters;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SimpleDistortionAudioProcessor)
 };

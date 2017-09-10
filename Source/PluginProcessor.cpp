@@ -31,6 +31,8 @@ SimpleDistortionAudioProcessor::SimpleDistortionAudioProcessor()
     parameters.createAndAddParameter("dist", "DISTORTION", "DIST", NormalisableRange<float>(1.0f, 5.0f, 0.1f), 1.0f, valueToTextFunction, nullptr );
     parameters.createAndAddParameter("bypass", "BYPASS SWITCH", "BYPASS", NormalisableRange<float>(0.0f, 1.0f, 1.0f), 1.0f, valueToTextFunction, nullptr );
 
+    parameters.addParameterListener("bypass", new ParameterListener(*this));
+
     parameters.state = ValueTree(Identifier("SimpleDistortion"));
 }
 
@@ -168,7 +170,8 @@ bool SimpleDistortionAudioProcessor::hasEditor() const
 
 AudioProcessorEditor* SimpleDistortionAudioProcessor::createEditor()
 {
-    return new SimpleDistortionAudioProcessorEditor (*this, parameters);
+    editor = new SimpleDistortionAudioProcessorEditor(*this, parameters);
+    return editor;
 }
 
 //==============================================================================
@@ -191,3 +194,22 @@ AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new SimpleDistortionAudioProcessor();
 }
+
+//==============================================================================
+// Inner Class
+SimpleDistortionAudioProcessor::ParameterListener::ParameterListener(SimpleDistortionAudioProcessor & p)
+:_p(p)
+{
+}
+
+void SimpleDistortionAudioProcessor::ParameterListener::parameterChanged(const String & parameterID, float newValue)
+{
+    if (parameterID == "bypass")
+    {
+        dynamic_cast<SimpleDistortionAudioProcessorEditor*>(_p.editor)->changeStandbyLightState(newValue);
+    }
+    else
+    {
+        // nothing to do
+    }
+} 
