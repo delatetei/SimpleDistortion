@@ -15,7 +15,6 @@
 //==============================================================================
 SimpleDistortionAudioProcessorEditor::SimpleDistortionAudioProcessorEditor (SimpleDistortionAudioProcessor& p, AudioProcessorValueTreeState& vts)
     : AudioProcessorEditor (&p), processor (p), valueTreeState(vts)
-    ,standbyLight("standbyLight", Colours::red, Colours::pink, Colours::grey)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
@@ -25,10 +24,7 @@ SimpleDistortionAudioProcessorEditor::SimpleDistortionAudioProcessorEditor (Simp
     checkLabel.setText("CHECK", dontSendNotification);
     checkLabel.setFont(Font(10));
     checkLabel.setJustificationType(Justification::centred);
-    path.addEllipse(0, 0, 5, 5);
-    standbyLight.setShape(path, true, true, true);
     addAndMakeVisible(&checkLabel);
-    addAndMakeVisible(&standbyLight);
 
     // Parameter
     level.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
@@ -78,6 +74,9 @@ void SimpleDistortionAudioProcessorEditor::paint (Graphics& g)
 
     g.setColour (Colours::white);
     g.setFont (15.0f);
+
+    g.setColour (Colours::red);
+    g.fillEllipse(145, 25, 10, 10);
 }
 
 void SimpleDistortionAudioProcessorEditor::resized()
@@ -86,8 +85,7 @@ void SimpleDistortionAudioProcessorEditor::resized()
     // subcomponents in your editor..
     Rectangle<int> area(getLocalBounds());
     area.removeFromTop(10);
-    Rectangle<int> standbyLightArea(area.removeFromTop(25));
-    area.removeFromTop(-15);
+    Rectangle<int> standbyLightArea(area.removeFromTop(10));
     Rectangle<int> parameterArea(area.removeFromTop(110));
     Rectangle<int> levelArea(parameterArea.removeFromLeft(150));
     Rectangle<int> distArea(parameterArea.removeFromLeft(150));
@@ -102,9 +100,6 @@ void SimpleDistortionAudioProcessorEditor::resized()
     bypassButtonArea.removeFromLeft(5);
     bypassButtonArea.removeFromRight(5);
     checkLabel.setBounds(standbyLightArea.removeFromTop(10));
-    standbyLightArea.removeFromTop(5);
-    standbyLightArea.removeFromLeft(145-2.5);
-    standbyLight.setBounds(standbyLightArea.removeFromTop(10));
     level.setBounds(levelArea.removeFromTop(100));
     levelLabel.setBounds(levelArea.removeFromTop(10));
     dist.setBounds(distArea.removeFromTop(100));

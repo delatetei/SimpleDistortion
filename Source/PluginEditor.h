@@ -35,8 +35,6 @@ private:
 
     // Standby Light
     Label checkLabel;
-    Path path;
-    ShapeButton standbyLight;
 
     // Parameter
     Slider level;
