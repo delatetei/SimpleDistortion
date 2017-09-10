@@ -57,7 +57,6 @@ SimpleDistortionAudioProcessorEditor::SimpleDistortionAudioProcessorEditor (Simp
 
     // Bypass Switch
     bypass.setButtonText(valueTreeState.getParameter("bypass")->name);
- // bypass.setToggleState(true, sendNotificationSync);
     bypass.setToggleState(true, sendNotification);
     bypass.setClickingTogglesState(true);
     addAndMakeVisible(&bypass);
