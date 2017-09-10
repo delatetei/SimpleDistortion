@@ -27,9 +27,9 @@ SimpleDistortionAudioProcessor::SimpleDistortionAudioProcessor()
 :parameters(*this, nullptr)
 {
     auto valueToTextFunction = [](float value) {return String(value); };
-    parameters.createAndAddParameter("level", "LEVEL", "LEVEL", NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f, valueToTextFunction, nullptr );
-    parameters.createAndAddParameter("dist", "DISTORTION", "DIST", NormalisableRange<float>(1.0f, 5.0f, 0.1f), 1.0f, valueToTextFunction, nullptr );
-    parameters.createAndAddParameter("bypass", "BYPASS SWITCH", "BYPASS", NormalisableRange<float>(0.0f, 1.0f, 1.0f), 1.0f, valueToTextFunction, nullptr );
+    parameters.createAndAddParameter("level", "LEVEL", "", NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f, valueToTextFunction, nullptr );
+    parameters.createAndAddParameter("dist", "DISTORTION", "", NormalisableRange<float>(1.0f, 5.0f, 0.1f), 1.0f, valueToTextFunction, nullptr );
+    parameters.createAndAddParameter("bypass", "BYPASS SWITCH", "", NormalisableRange<float>(0.0f, 1.0f, 1.0f), 1.0f, valueToTextFunction, nullptr );
 
     parameters.addParameterListener("bypass", new ParameterListener(*this));
 
