@@ -29,6 +29,7 @@ SimpleDistortionAudioProcessor::SimpleDistortionAudioProcessor()
     auto valueToTextFunction = [](float value) {return String(value); };
     parameters.createAndAddParameter("level", "LEVEL", "LEVEL", NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f, valueToTextFunction, nullptr );
     parameters.createAndAddParameter("dist", "DISTORTION", "DIST", NormalisableRange<float>(1.0f, 5.0f, 0.1f), 1.0f, valueToTextFunction, nullptr );
+    parameters.createAndAddParameter("bypass", "BYPASS SWITCH", "BYPASS", NormalisableRange<float>(0.0f, 1.0f, 1.0f), 1.0f, valueToTextFunction, nullptr );
 
     parameters.state = ValueTree(Identifier("SimpleDistortion"));
 }
@@ -140,6 +141,8 @@ void SimpleDistortionAudioProcessor::processBlock (AudioSampleBuffer& buffer, Mi
     // this code if your algorithm always overwrites all the output channels.
     for (int i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
+
+    if (*(parameters.getRawParameterValue("bypass")) == 0.0f) return;
 
     // This is the place where you'd normally do the guts of your plugin's
     // audio processing...

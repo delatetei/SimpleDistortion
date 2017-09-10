@@ -55,11 +55,11 @@ SimpleDistortionAudioProcessorEditor::SimpleDistortionAudioProcessorEditor (Simp
 
     // Bypass Switch
     bypass.setButtonText("Brand Name");
-
     addAndMakeVisible(&bypass);
 
     levelAttachment = new AudioProcessorValueTreeState::SliderAttachment(valueTreeState, "level", level);
     distAttachment = new AudioProcessorValueTreeState::SliderAttachment(valueTreeState, "dist", dist);
+    bypassAttachment = new AudioProcessorValueTreeState::ButtonAttachment(valueTreeState, "bypass", bypass);
 }
 
 SimpleDistortionAudioProcessorEditor::~SimpleDistortionAudioProcessorEditor()

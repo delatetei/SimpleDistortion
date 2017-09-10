@@ -52,6 +52,7 @@ private:
 
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> levelAttachment;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> distAttachment;
+    ScopedPointer<AudioProcessorValueTreeState::ButtonAttachment> bypassAttachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SimpleDistortionAudioProcessorEditor)
 };
