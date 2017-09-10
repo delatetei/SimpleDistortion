@@ -18,7 +18,7 @@ SimpleDistortionAudioProcessorEditor::SimpleDistortionAudioProcessorEditor (Simp
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (300, 400);
+    setSize (WINDOW_WIDTH, WINDOW_HEIGHT);
 
     // Standby Light
     checkLabel.setText("CHECK", dontSendNotification);
@@ -88,35 +88,52 @@ void SimpleDistortionAudioProcessorEditor::resized()
     // subcomponents in your editor..
     Rectangle<int> area(getLocalBounds());
     area.removeFromTop(10);
+
+    // Standby Light
     Rectangle<int> standbyLightArea(area.removeFromTop(25));
+    checkLabel.setBounds(standbyLightArea.removeFromTop(10));
+    standbyLightArea.removeFromLeft(145);
+    standbyLightArea.removeFromTop(5);
+    standbyLight.setBounds(standbyLightArea.removeFromTop(10));
     area.removeFromTop(-15);
+
+    // Parameter
     Rectangle<int> parameterArea(area.removeFromTop(110));
+    
+    // Level Knob
     Rectangle<int> levelArea(parameterArea.removeFromLeft(150));
+    level.setBounds(levelArea.removeFromTop(100));
+    levelLabel.setBounds(levelArea.removeFromTop(10));
+
+    // Dist Knob
     Rectangle<int> distArea(parameterArea.removeFromLeft(150));
+    dist.setBounds(distArea.removeFromTop(100));
+    distLabel.setBounds(distArea.removeFromTop(10));
+
+    // Product Name 1
     area.removeFromTop(10);
     Rectangle<int> productNameArea1(area.removeFromTop(35));
+    productNameArea1.removeFromLeft(10);
+    productNameLabel1.setBounds(productNameArea1.removeFromTop(35));
+
+
+    // Product Name 2
     Rectangle<int> productNameArea2(area.removeFromTop(35));
+    productNameLabel2.setBounds(productNameArea2.removeFromTop(35));
+
+    // Product Name 3
     Rectangle<int> productNameArea3(area.removeFromTop(20));
+    productNameArea3.removeFromRight(10);
+    productNameLabel3.setBounds(productNameArea3.removeFromTop(20));
+
+    // Bypass Button
     area.removeFromTop(5);
     Rectangle<int> bypassButtonArea(area.removeFromTop(180));
     bypassButtonArea.removeFromTop(5);
     bypassButtonArea.removeFromBottom(5);
     bypassButtonArea.removeFromLeft(5);
     bypassButtonArea.removeFromRight(5);
-    checkLabel.setBounds(standbyLightArea.removeFromTop(10));
-    standbyLightArea.removeFromLeft(145);
-    standbyLightArea.removeFromTop(5);
-    standbyLight.setBounds(standbyLightArea.removeFromTop(10));
-    level.setBounds(levelArea.removeFromTop(100));
-    levelLabel.setBounds(levelArea.removeFromTop(10));
-    dist.setBounds(distArea.removeFromTop(100));
-    distLabel.setBounds(distArea.removeFromTop(10));
-    productNameArea1.removeFromLeft(10);
-    productNameLabel1.setBounds(productNameArea1.removeFromTop(35));
-    productNameLabel2.setBounds(productNameArea2.removeFromTop(35));
-    productNameArea3.removeFromRight(10);
-    productNameLabel3.setBounds(productNameArea3.removeFromTop(20));
-    bypass.setBounds(bypassButtonArea.removeFromTop(180));
+    bypass.setBounds(bypassButtonArea.removeFromTop(170));
 }
 
 void SimpleDistortionAudioProcessorEditor::changeStandbyLightState(float value)

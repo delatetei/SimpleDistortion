@@ -37,6 +37,11 @@ private:
     SimpleDistortionAudioProcessor& processor;
     AudioProcessorValueTreeState& valueTreeState;
 
+    //==============================================================================
+    const int WINDOW_HEIGHT = 400;
+    const int WINDOW_WIDTH = 300;
+
+    //==============================================================================
     // Standby Light
     Label checkLabel;
     StandbyLight standbyLight;
