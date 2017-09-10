@@ -31,7 +31,7 @@ SimpleDistortionAudioProcessor::SimpleDistortionAudioProcessor()
     auto textToInvertValue = [](const String& text) {return text.getFloatValue(); };
     auto onOffToInvertValue = [](const String& text) { return text == "ON" ? 1.0f : 0.0f; };
     parameters.createAndAddParameter("level", "LEVEL", "", NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.7f, valueToInvertText, textToInvertValue);
-    parameters.createAndAddParameter("dist", "DISTORTION", "", NormalisableRange<float>(1.0f, 5.0f, 0.1f), 1.0f, valueToInvertText, textToInvertValue);
+    parameters.createAndAddParameter("dist", "DIST", "", NormalisableRange<float>(1.0f, 5.0f, 0.1f), 1.0f, valueToInvertText, textToInvertValue);
     parameters.createAndAddParameter("bypass", "BYPASS SWITCH", "", NormalisableRange<float>(0.0f, 1.0f, 1.0f), 1.0f, valueToInvertOnOff, onOffToInvertValue);
 
     parameters.addParameterListener("bypass", new ParameterListener(*this));

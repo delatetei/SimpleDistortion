@@ -31,11 +31,11 @@ SimpleDistortionAudioProcessorEditor::SimpleDistortionAudioProcessorEditor (Simp
     // Parameter
     level.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     level.setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
-    levelLabel.setText(valueTreeState.getParameter("level")->label, dontSendNotification);
+    levelLabel.setText(valueTreeState.getParameter("level")->name, dontSendNotification);
     levelLabel.setJustificationType(Justification::centred);
     dist.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     dist.setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
-    distLabel.setText(valueTreeState.getParameter("dist")->label, dontSendNotification);
+    distLabel.setText(valueTreeState.getParameter("dist")->name, dontSendNotification);
     distLabel.setJustificationType(Justification::centred);
     addAndMakeVisible(&level);
     addAndMakeVisible(&levelLabel);
@@ -56,7 +56,7 @@ SimpleDistortionAudioProcessorEditor::SimpleDistortionAudioProcessorEditor (Simp
     addAndMakeVisible(&productNameLabel3);
 
     // Bypass Switch
-    bypass.setButtonText("Brand Name");
+    bypass.setButtonText(valueTreeState.getParameter("bypass")->name);
  // bypass.setToggleState(true, sendNotificationSync);
     bypass.setToggleState(true, sendNotification);
     bypass.setClickingTogglesState(true);
