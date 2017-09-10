@@ -121,5 +121,6 @@ void SimpleDistortionAudioProcessorEditor::resized()
 
 void SimpleDistortionAudioProcessorEditor::changeStandbyLightState(float value)
 {
-      standbyLight.setColour(0, value == 1.0f ? Colours::red : Colours::grey);
+    standbyLight.setColour(0, value == 1.0f ? Colours::red : Colours::grey);
+    repaint();
 }
