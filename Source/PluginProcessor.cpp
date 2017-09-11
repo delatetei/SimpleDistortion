@@ -158,6 +158,7 @@ void SimpleDistortionAudioProcessor::processBlock (AudioSampleBuffer& buffer, Mi
         {
             float data = channelData[buffNum];
             int sign = (data > 0) - (data < 0);
+            data = data * *(parameters.getRawParameterValue("dist"));
             channelData[buffNum] = sign * (1.0f - std::exp(-5.0f * std::abs(data)));
         }
     }
